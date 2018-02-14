@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+    <line>
+      <![CDATA[Inside Before Suite method.]]>
+    </line>
+    <line>
+      <![CDATA[On StartFlightBooking]]>
+    </line>
+    <line>
+      <![CDATA[Inside Before Method method.]]>
+    </line>
+    <line>
+      <![CDATA[Launching Chrome browser.]]>
+    </line>
+    <line>
+      <![CDATA[Chrome browser launched.]]>
+    </line>
+    <line>
+      <![CDATA[Test StartflightBooking]]>
+    </line>
+    <line>
+      <![CDATA[Launching application under test..]]>
+    </line>
+    <line>
+      <![CDATA[Launched application under test..]]>
+    </line>
+    <line>
+      <![CDATA[Test SuccessflightBooking]]>
+    </line>
+    <line>
+      <![CDATA[Inside After Method method.]]>
+    </line>
+    <line>
+      <![CDATA[On FinishFlightBooking]]>
+    </line>
+    <line>
+      <![CDATA[Inside After Suite Method.]]>
+    </line>
+  </reporter-output>
+  <suite name="kayak" duration-ms="58417" started-at="2018-02-14T15:25:26Z" finished-at="2018-02-14T15:26:25Z">
+    <groups>
+    </groups>
+    <test name="FlightBooking" duration-ms="58417" started-at="2018-02-14T15:25:26Z" finished-at="2018-02-14T15:26:25Z">
+      <class name="co.in.kayak.test.FlightBooking">
+        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:co.in.kayak.test.FlightBooking@49fd9b]" name="beforeSuite" is-config="true" duration-ms="864" started-at="2018-02-14T15:25:25Z" finished-at="2018-02-14T15:25:26Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Inside Before Suite method.]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- beforeSuite -->
+        <test-method status="PASS" signature="beforeMethod(java.lang.String)[pri:0, instance:co.in.kayak.test.FlightBooking@49fd9b]" name="beforeMethod" is-config="true" duration-ms="11166" started-at="2018-02-14T15:25:26Z" finished-at="2018-02-14T15:25:37Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Inside Before Method method.]]>
+            </line>
+            <line>
+              <![CDATA[Launching Chrome browser.]]>
+            </line>
+            <line>
+              <![CDATA[Chrome browser launched.]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:co.in.kayak.test.FlightBooking@49fd9b]" name="beforeTest" is-config="true" duration-ms="27" started-at="2018-02-14T15:25:37Z" finished-at="2018-02-14T15:25:37Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method status="PASS" signature="flightBooking()[pri:0, instance:co.in.kayak.test.FlightBooking@49fd9b]" name="flightBooking" duration-ms="47174" started-at="2018-02-14T15:25:37Z" finished-at="2018-02-14T15:26:25Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test StartflightBooking]]>
+            </line>
+            <line>
+              <![CDATA[Launching application under test..]]>
+            </line>
+            <line>
+              <![CDATA[Launched application under test..]]>
+            </line>
+            <line>
+              <![CDATA[Test SuccessflightBooking]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- flightBooking -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:co.in.kayak.test.FlightBooking@49fd9b]" name="afterMethod" is-config="true" duration-ms="1" started-at="2018-02-14T15:26:25Z" finished-at="2018-02-14T15:26:25Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Inside After Method method.]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:co.in.kayak.test.FlightBooking@49fd9b]" name="afterSuite" is-config="true" duration-ms="383" started-at="2018-02-14T15:26:25Z" finished-at="2018-02-14T15:26:25Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Inside After Suite Method.]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- afterSuite -->
+      </class> <!-- co.in.kayak.test.FlightBooking -->
+    </test> <!-- FlightBooking -->
+  </suite> <!-- kayak -->
+</testng-results>
