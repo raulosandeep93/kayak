@@ -1,8 +1,6 @@
 package co.in.kayak.base;
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -61,7 +59,7 @@ public class PageTest {
 	
 	public void killDriverInstance() {
 		try {
-			Process process = Runtime.getRuntime().exec(".\\KillDriver.bat");
+			Process process = Runtime.getRuntime().exec("D:\\Selenium\\Workspace\\Assignment02\\KillDriver.bat");
 			process.waitFor();
 		} catch (IOException ex) {
 			Reporter.log("IOException in accessing KillDriver.bat file:" + ex.toString());
@@ -70,33 +68,29 @@ public class PageTest {
 		}
 	}
 
-	public WebDriver  initChrome() {
+	public void  initChrome() {
 		System.setProperty("webdriver.chrome.driver", CONSTANTS.CHROMEPATH);
 		
 		Reporter.log("Launching Chrome browser.");
+		System.out.println("Launching Chrome browser.");
 		driver = new ChromeDriver();
 		Reporter.log("Chrome browser launched.");
 		
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(30000, TimeUnit.MILLISECONDS);
-		
-		return driver;
 	}
 
-	public WebDriver  initFirefox() {
+	public void  initFirefox() {
 		System.setProperty("webdriver.gecko.driver", CONSTANTS.FIREFOXPATH);
 		
 		Reporter.log("Launching Firefox browser.");
+		System.out.println("Launching Firefox browser.");
 		driver = new FirefoxDriver();
 		Reporter.log("Firefox browser launched.");		
 		
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(30000, TimeUnit.MILLISECONDS);
-		
-		return driver;
 	}
 
-	public WebDriver initInternetExplorer() {
+	public void initInternetExplorer() {
 		System.setProperty("webdriver.ie.driver", CONSTANTS.IEPATH);
 		
 		Reporter.log("Launching Internet Explorer browser.");
@@ -104,8 +98,5 @@ public class PageTest {
 		Reporter.log("Internet Explorer browser launched.");		
 		
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(30000, TimeUnit.MILLISECONDS);
-		
-		return driver;
 	}
 }

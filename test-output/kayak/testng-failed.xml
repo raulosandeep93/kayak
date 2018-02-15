@@ -1,22 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [kayak]">
+<suite thread-count="2" guice-stage="DEVELOPMENT" name="Failed suite [kayak]" parallel="tests">
   <listeners>
     <listener class-name="co.in.kayak.utils.Listeners"/>
   </listeners>
-  <test thread-count="5" name="FlightBooking(failed)">
+  <test thread-count="2" name="FlightBooking_Firefox(failed)" parallel="tests">
+    <parameter name="browserName" value="Firefox"/>
+    <classes>
+      <class name="co.in.kayak.test.FlightBooking">
+        <methods>
+          <include name="beforeMethod"/>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="beforeMethod"/>
+          <include name="afterMethod"/>
+          <include name="flightBooking"/>
+        </methods>
+      </class> <!-- co.in.kayak.test.FlightBooking -->
+    </classes>
+  </test> <!-- FlightBooking_Firefox(failed) -->
+  <test thread-count="2" name="FlightBooking_Chrome(failed)" parallel="tests">
     <parameter name="browserName" value="Chrome"/>
     <classes>
       <class name="co.in.kayak.test.FlightBooking">
         <methods>
           <include name="beforeMethod"/>
           <include name="beforeSuite"/>
-          <include name="beforeTest"/>
           <include name="afterSuite"/>
+          <include name="beforeMethod"/>
           <include name="afterMethod"/>
           <include name="flightBooking"/>
         </methods>
       </class> <!-- co.in.kayak.test.FlightBooking -->
     </classes>
-  </test> <!-- FlightBooking(failed) -->
+  </test> <!-- FlightBooking_Chrome(failed) -->
 </suite> <!-- Failed suite [kayak] -->

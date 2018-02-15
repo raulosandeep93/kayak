@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -38,7 +38,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" class="navigator-link" panel-name="suite-kayak">
-              <span class="suite-name border-passed">kayak</span>
+              <span class="suite-name border-failed">kayak</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -54,7 +54,7 @@
                 </li>
                 <li>
                   <a href="#" class="navigator-link " panel-name="testlist-kayak">
-                    <span class="test-stats">1 test</span>
+                    <span class="test-stats">2 tests</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -91,21 +91,35 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">2 methods, 1 failed,  1 skipped,  </span>
                   </li>
                   <li>
-                    <span class="method-list-title passed">Passed methods</span>
-                    <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-kayak" class="hide-methods passed suite-kayak"> (hide)</a> <!-- hide-methods passed suite-kayak -->
-                      <a href="#" panel-name="suite-kayak" class="show-methods passed suite-kayak"> (show)</a> <!-- show-methods passed suite-kayak -->
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-kayak" class="hide-methods failed suite-kayak"> (hide)</a> <!-- hide-methods failed suite-kayak -->
+                      <a href="#" panel-name="suite-kayak" class="show-methods failed suite-kayak"> (show)</a> <!-- show-methods failed suite-kayak -->
                     </span>
-                    <div class="method-list-content passed suite-kayak">
+                    <div class="method-list-content failed suite-kayak">
                       <span>
-                        <img width="3%" src="passed.png"/>
+                        <img width="3%" src="failed.png"/>
                         <a href="#" class="method navigator-link" panel-name="suite-kayak" title="co.in.kayak.test.FlightBooking" hash-for-method="flightBooking">flightBooking</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content passed suite-kayak -->
+                    </div> <!-- method-list-content failed suite-kayak -->
+                  </li>
+                  <li>
+                    <span class="method-list-title skipped">Skipped methods</span>
+                    <span class="show-or-hide-methods skipped">
+                      <a href="#" panel-name="suite-kayak" class="hide-methods skipped suite-kayak"> (hide)</a> <!-- hide-methods skipped suite-kayak -->
+                      <a href="#" panel-name="suite-kayak" class="show-methods skipped suite-kayak"> (show)</a> <!-- show-methods skipped suite-kayak -->
+                    </span>
+                    <div class="method-list-content skipped suite-kayak">
+                      <span>
+                        <img width="3%" src="skipped.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-kayak" title="co.in.kayak.test.FlightBooking" hash-for-method="flightBooking">flightBooking</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content skipped suite-kayak -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -117,9 +131,9 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-kayak" class="panel kayak">
-          <div class="suite-kayak-class-passed">
+          <div class="suite-kayak-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
+              <img src="failed.png"/>
               <span class="class-name">co.in.kayak.test.FlightBooking</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
@@ -128,10 +142,64 @@
                   <a name="flightBooking">
                   </a> <!-- flightBooking -->
                   <span class="method-name">flightBooking</span>
+                  <div class="stack-trace">junit.framework.AssertionFailedError: Stale Element exception:stale element reference: element is not attached to the page document
+  (Session info: chrome=64.0.3282.167)
+  (Driver info: chromedriver=2.33.506120 (e3e53437346286c0bc2d2dc9aa4915ba81d9023f),platform=Windows NT 6.1.7601 SP1 x86) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
+Build info: version: &apos;3.9.1&apos;, revision: &apos;63f7b50&apos;, time: &apos;2018-02-07T22:25:02.294Z&apos;
+System info: host: &apos;JARVIS-PC&apos;, ip: &apos;192.168.1.6&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_141&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.33.506120 (e3e53437346286..., userDataDir: C:\Users\Jarvis\AppData\Loc...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 64.0.3282.167, webStorageEnabled: true}
+Session ID: 1999eb0f0d79b43d77761799086205a1
+	at junit.framework.Assert.fail(Assert.java:47)
+	at co.in.kayak.base.PageObject.elementToBeClickable(PageObject.java:79)
+	at co.in.kayak.base.PageObject.selectValueFromDropdown(PageObject.java:122)
+	at co.in.kayak.page.Flights.selectDestination(Flights.java:79)
+	at co.in.kayak.test.FlightBooking.flightBooking(FlightBooking.java:30)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 16 stack frames
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-kayak-class-passed -->
+          </div> <!-- suite-kayak-class-failed -->
+          <div class="suite-kayak-class-skipped">
+            <div class="main-panel-header rounded-window-top">
+              <img src="skipped.png"/>
+              <span class="class-name">co.in.kayak.test.FlightBooking</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="flightBooking">
+                  </a> <!-- flightBooking -->
+                  <span class="method-name">flightBooking</span>
+                  <div class="stack-trace">java.lang.IllegalStateException: The driver executable does not exist: E:\SeleniumWorkspace\FlightReservation\.\browserDriver\geckodriver.exe
+	at com.google.common.base.Preconditions.checkState(Preconditions.java:585)
+	at org.openqa.selenium.remote.service.DriverService.checkExecutable(DriverService.java:136)
+	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:131)
+	at org.openqa.selenium.firefox.GeckoDriverService.access$100(GeckoDriverService.java:41)
+	at org.openqa.selenium.firefox.GeckoDriverService$Builder.findDefaultExecutable(GeckoDriverService.java:141)
+	at org.openqa.selenium.remote.service.DriverService$Builder.build(DriverService.java:339)
+	at org.openqa.selenium.firefox.FirefoxDriver.toExecutor(FirefoxDriver.java:158)
+	at org.openqa.selenium.firefox.FirefoxDriver.&lt;init&gt;(FirefoxDriver.java:120)
+	at org.openqa.selenium.firefox.FirefoxDriver.&lt;init&gt;(FirefoxDriver.java:98)
+	at co.in.kayak.base.PageTest.initFirefox(PageTest.java:87)
+	at co.in.kayak.base.PageTest.beforeMethod(PageTest.java:36)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 19 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-kayak-class-skipped -->
         </div> <!-- panel kayak -->
         <div panel-name="test-xml-kayak" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -141,11 +209,11 @@
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite guice-stage=&quot;DEVELOPMENT&quot; name=&quot;kayak&quot;&gt;
+&lt;suite thread-count=&quot;2&quot; guice-stage=&quot;DEVELOPMENT&quot; name=&quot;kayak&quot; parallel=&quot;tests&quot;&gt;
   &lt;listeners&gt;
     &lt;listener class-name=&quot;co.in.kayak.utils.Listeners&quot;/&gt;
   &lt;/listeners&gt;
-  &lt;test thread-count=&quot;5&quot; name=&quot;FlightBooking&quot;&gt;
+  &lt;test thread-count=&quot;2&quot; name=&quot;FlightBooking_Chrome&quot; parallel=&quot;tests&quot;&gt;
     &lt;parameter name=&quot;browserName&quot; value=&quot;Chrome&quot;/&gt;
     &lt;classes&gt;
       &lt;class name=&quot;co.in.kayak.test.FlightBooking&quot;&gt;
@@ -154,7 +222,17 @@
         &lt;/methods&gt;
       &lt;/class&gt; &lt;!-- co.in.kayak.test.FlightBooking --&gt;
     &lt;/classes&gt;
-  &lt;/test&gt; &lt;!-- FlightBooking --&gt;
+  &lt;/test&gt; &lt;!-- FlightBooking_Chrome --&gt;
+  &lt;test thread-count=&quot;2&quot; name=&quot;FlightBooking_Firefox&quot; parallel=&quot;tests&quot;&gt;
+    &lt;parameter name=&quot;browserName&quot; value=&quot;Firefox&quot;/&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;co.in.kayak.test.FlightBooking&quot;&gt;
+        &lt;methods&gt;
+          &lt;include name=&quot;flightBooking&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- co.in.kayak.test.FlightBooking --&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- FlightBooking_Firefox --&gt;
 &lt;/suite&gt; &lt;!-- kayak --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -166,7 +244,10 @@
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">FlightBooking (1 class)</span>
+                <span class="test-name">FlightBooking_Chrome (1 class)</span>
+              </li>
+              <li>
+                <span class="test-name">FlightBooking_Firefox (1 class)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -192,16 +273,20 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(2);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'flightBooking')
 data.setCell(0, 2, 'co.in.kayak.test.FlightBooking')
-data.setCell(0, 3, 47174);
+data.setCell(0, 3, 53537);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'flightBooking')
+data.setCell(1, 2, 'co.in.kayak.test.FlightBooking')
+data.setCell(1, 3, 0);
 window.suiteTableData['kayak']= { tableData: data, tableDiv: 'times-div-kayak'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 47 seconds</span>
+              <span class="suite-total-time">Total running time: 53 seconds</span>
               <div id="times-div-kayak">
               </div> <!-- times-div-kayak -->
             </div> <!-- times-div -->
@@ -215,10 +300,30 @@ return data;
             <div class="reporter-method-div">
               <span class="reporter-method-name">flightBooking</span>
               <div class="reporter-method-output-div">
+                <span class="reporter-method-output">Test SkippedflightBooking</span>
+                <span class="reporter-method-output">On FinishFlightBooking_Firefox</span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">flightBooking</span>
+              <div class="reporter-method-output-div">
                 <span class="reporter-method-output">Test StartflightBooking</span>
-                <span class="reporter-method-output">Launching application under test..</span>
-                <span class="reporter-method-output">Launched application under test..</span>
-                <span class="reporter-method-output">Test SuccessflightBooking</span>
+                <span class="reporter-method-output">Launching application under test.</span>
+                <span class="reporter-method-output">Launched application under test.</span>
+                <span class="reporter-method-output">Clicking on One Way link.</span>
+                <span class="reporter-method-output">Clicked on One Way link.</span>
+                <span class="reporter-method-output">Expected value:Delhi is present in the dropdown list.</span>
+                <span class="reporter-method-output">Stale Element exception:org.openqa.selenium.StaleElementReferenceException: stale element reference: element is not attached to the page document
+  (Session info: chrome=64.0.3282.167)
+  (Driver info: chromedriver=2.33.506120 (e3e53437346286c0bc2d2dc9aa4915ba81d9023f),platform=Windows NT 6.1.7601 SP1 x86) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
+Build info: version: '3.9.1', revision: '63f7b50', time: '2018-02-07T22:25:02.294Z'
+System info: host: 'JARVIS-PC', ip: '192.168.1.6', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_141'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.33.506120 (e3e53437346286..., userDataDir: C:\Users\Jarvis\AppData\Loc...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 64.0.3282.167, webStorageEnabled: true}
+Session ID: 1999eb0f0d79b43d77761799086205a1</span>
+                <span class="reporter-method-output">Test FailureflightBooking</span>
               </div> <!-- reporter-method-output-div -->
             </div> <!-- reporter-method-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -242,25 +347,33 @@ return data;
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
               <div class="configuration-method before">
-                <span class="method-name">beforeMethod(Chrome)</span>
-                <span class="method-start">900 ms</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">beforeMethod(Firefox)</span>
+                <span class="method-start">55 ms</span>
               </div> <!-- configuration-method before -->
               <div class="configuration-method before">
-                <span class="method-name">beforeTest</span>
-                <span class="method-start">12066 ms</span>
+                <span class="method-name">beforeMethod(Chrome)</span>
+                <span class="method-start">55 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethod</span>
+                <span class="method-start">7559 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">flightBooking</span>
-                <span class="method-start">12093 ms</span>
+                <span class="method-start">7595 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">afterMethod</span>
-                <span class="method-start">59269 ms</span>
+                <span class="method-start">61152 ms</span>
               </div> <!-- configuration-method after -->
-              <div class="configuration-suite after">
-                <span class="method-name">afterSuite</span>
-                <span class="method-start">59314 ms</span>
-              </div> <!-- configuration-suite after -->
+              <div class="test-method">
+                <span class="method-name">flightBooking</span>
+                <span class="method-start">-1518706893657 ms</span>
+              </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->

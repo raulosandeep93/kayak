@@ -18,62 +18,104 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
 import co.in.kayak.utils.CONSTANTS;
+import junit.framework.Assert;
 
 public class PageObject extends PageTest {
-	public static WebDriver driver = PageTest.driver;
-
-	public void launchAUT(String url) {
-		Reporter.log("Launching application under test..");
-		driver.get(url);
-		Reporter.log("Launched application under test..");
-	}
 	
+	public WebDriver driver = PageTest.driver;
+	
+	/**
+	 * 
+	 * To launch the applicataion under test.	 * 
+	 * @param url - It defines the URL which needs to be triggered.
+	 * 
+	 */
+	public void launchAUT(String url) {
+		Reporter.log("Launching application under test.");
+		driver.get(url);
+		Reporter.log("Launched application under test.");
+	}
+
+	
+	/**
+	 * 
+	 * Generic method to click an element.
+	 * @param element - It takes an element as an parameter.
+	 * 
+	 */
 	public void elementClick(WebElement element) {
 		elementToBeClickable(element);
 		element.click();
 	}
 
+	/**
+	 * 
+	 * Generic method to send values to input elements.
+	 * @param element - The element with which action needs to be performed.
+	 * @param value - The value which is supposed to be passed to the element.
+	 * 
+	 */
 	public void enterValue(WebElement element, String value) {
 		elementToBeClickable(element);
 		element.clear();
 		element.sendKeys(value);
 	}
 
+	/**
+	 * 
+	 * Generic method for implementing explicit wait for an element to be clickable.
+	 * @param element - The element for which explicit wait needs to get implemented.
+	 * 
+	 */
 	public void elementToBeClickable(WebElement element) {
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, 30);
+			WebDriverWait wait = new WebDriverWait(driver, 60);
 			wait.until(ExpectedConditions.elementToBeClickable(element));
 		} catch (StaleElementReferenceException ex) {
-			System.out.println("Stale Element exception:" + ex.toString());
+			WebDriverWait wait = new WebDriverWait(driver, 60);
+			wait.until(ExpectedConditions.elementToBeClickable(element));
+			
+			Reporter.log("Stale Element exception:" + ex.toString());
+			Assert.fail("Stale Element exception:" + ex.getMessage());
 		} catch (NoSuchElementException ex) {
-			System.out.println("No such element exception:" + ex.toString());
+			Reporter.log("No such element exception:" + ex.toString());
+			Assert.fail("No such element exception:" + ex.toString());
 		} catch (Exception ex) {
-			System.out.println("Exception in elementToBeClickable method:" + ex.toString());
+			Reporter.log("Exception in elementToBeClickable method:" + ex.toString());
+			Assert.fail("Exception in elementToBeClickable method:" + ex.toString());
 		}
 	}
 
-	public void elementToBeVisible(By by) {
+	/**
+	 * 
+	 * Generic method for implementing explicit wait for an element to be visible.
+	 * @param element - The element for which explicit wait needs to get implemented.
+	 * 
+	 */
+	public void elementToBeVisible(WebElement element) {
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 30);
-			wait.until(ExpectedConditions.visibilityOf(driver.findElement(by)));
+			wait.until(ExpectedConditions.visibilityOf(element));
 		} catch (StaleElementReferenceException ex) {
-			System.out.println("Stale Element exception:" + ex.toString());
+			Reporter.log("Stale Element exception:" + ex.toString());
+			Assert.fail("Stale Element exception:" + ex.toString());
 		} catch (NoSuchElementException ex) {
-			System.out.println("No such element exception:" + ex.toString());
+			Reporter.log("No such element exception:" + ex.toString());
+			Assert.fail("No such element exception:" + ex.toString());
 		} catch (Exception ex) {
-			System.out.println("Exception in elementToBeVisible method:" + ex.toString());
+			Reporter.log("Exception in elementToBeVisible method:" + ex.toString());
+			Assert.fail("Exception in elementToBeVisible method:" + ex.toString());
 		}
 	}
 
-	public void waitForPageTitle(String pageTitle) {
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, 30);
-			wait.until(ExpectedConditions.titleContains(pageTitle));
-		} catch (Exception ex) {
-			System.out.println("Exception in elementToBeVisible method:" + ex.toString());
-		}
-	}
-
+	/**
+	 * 
+	 * Generic method to select a value from auto-suggestion dropdown list.
+	 * @param element - The element from which a value needs to get selected.
+	 * @param value - The value which needs to get selected.
+	 * @return - The method returns TRUE if the value is available in the dropdown list
+	 * 					else the method returns FALSE if the value is not available in the dropdown list.
+	 */
 	public boolean selectValueFromDropdown(WebElement element, String value) {
 		boolean cityFound = false;
 
@@ -92,14 +134,24 @@ public class PageObject extends PageTest {
 		}
 
 		if (cityFound == true) {
-			System.out.println("Expected value:" + value + " has been selected from the availabel list.");
+			Reporter.log("Expected value:" + value + " is present in the dropdown list.");
+//			System.out.println("Expected value:" + value + " is present in the dropdown list.");
 		} else {
-			System.out.println("Expected value:" + value + " is not present in the available list.");
+			Reporter.log("Expected value:" + value + " is not present in the dropdown list.");
+//			System.out.println("Expected value:" + value + " is not present in the dropdown list.");
+			Assert.fail("Expected value:" + value + " is not present in the dropdown list.");
 		}
-		
+
 		return cityFound;
 	}
 
+	/**
+	 * 
+	 * Generic method to format the date as per required by AUT.
+	 * @param date - The date mentioned by the user to book the ticket.
+	 * @param monthYear
+	 * @return - It returns the formatted date as per required by AUT.
+	 */
 	public String convertTodaysDate(String date, String monthYear) {
 		String todaysDate = null;
 		String currentMonth = null;
@@ -147,11 +199,29 @@ public class PageObject extends PageTest {
 		return todaysDate;
 	}
 
-	public String getAttributeText(By by) {
-		elementToBeVisible(by);
-		return driver.findElement(by).getText();
-	}
+	/**
+	 * 
+	 * Generic method to get the attribute of an element.
+	 * @param element - Element for which attribute needs to get fetched. 
+	 * @return - It returns the required attribute value for the given element.
+	 */
+	public String getAttribute(WebElement element, String attribute) {
+		elementToBeVisible(element);
 
+		switch (attribute) {
+		case "text":
+			element.getText();
+			break;
+		case "class":
+			element.getAttribute("class");
+			break;
+		default:
+			System.out.println("Invalid attribute name.");
+			Assert.fail("Invalid attribute name.");
+		}
+		return element.getText();
+	}
+	
 	public String getMonth(String date) {
 		String month = null;
 		String splitMonth = date.split("-")[1];
@@ -210,26 +280,30 @@ public class PageObject extends PageTest {
 
 	public void getWindowHandles(String title) {
 		Set<String> allWindows = driver.getWindowHandles();
-
-		boolean windowFound = false;
+		System.out.println(allWindows.size());
 		
+		boolean windowFound = false;
+
 		for (String window : allWindows) {
 			driver.switchTo().window(window);
 			System.out.println("Page Title:" + driver.getTitle());
+			
 			if (driver.getTitle().contains(title) || driver.getTitle().equalsIgnoreCase(title)) {
 				windowFound = true;
 				break;
 			} else {
-				windowFound= false;
+				windowFound = false;
 			}
 		}
-		
+
 		if (windowFound) {
 			Reporter.log("Window switched successfully.");
 			System.out.println("Window switched successfully.");
 		} else {
 			Reporter.log("Unable to find the desired window.");
 			System.out.println("Unable to find the desired window.");
+			Assert.fail("Unable to find the desired window.");
 		}
 	}
+
 }
