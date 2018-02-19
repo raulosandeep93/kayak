@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<title>TestNG Report</title>
+<style type="text/css">table {margin-bottom:10px;border-collapse:collapse;empty-cells:show}th,td {border:1px solid #009;padding:.25em .5em}th {vertical-align:bottom}td {vertical-align:top}table a {font-weight:bold}.stripe td {background-color: #E6EBF9}.num {text-align:right}.passedodd td {background-color: #3F3}.passedeven td {background-color: #0A0}.skippedodd td {background-color: #DDD}.skippedeven td {background-color: #CCC}.failedodd td,.attn {background-color: #F33}.failedeven td,.stripe .attn {background-color: #D00}.stacktrace {white-space:pre;font-family:monospace}.totop {font-size:85%;text-align:center;border-bottom:2px solid #000}.invisible {display:none}</style>
+</head>
+<body>
+<table>
+<tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
+<tr><th colspan="7">kayak</th></tr>
+<tr><td><a href="#t0">FlightBooking_Firefox</a></td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">102,184</td><td></td><td></td></tr>
+<tr class="stripe"><td><a href="#t1">FlightBooking_Chrome</a></td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">124,167</td><td></td><td></td></tr>
+<tr><th>Total</th><th class="num">0</th><th class="num">0</th><th class="num attn">2</th><th class="num">226,351</th><th colspan="2"></th></tr>
+</table>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">kayak</th></tr></tbody><tbody id="t0"><tr><th colspan="4">FlightBooking_Firefox &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">co.in.kayak.test.FlightBooking</td><td><a href="#m0">flightBooking</a></td><td rowspan="1">1519054093854</td><td rowspan="1">86614</td></tr></tbody>
+<tbody id="t1"><tr><th colspan="4">FlightBooking_Chrome &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">co.in.kayak.test.FlightBooking</td><td><a href="#m1">flightBooking</a></td><td rowspan="1">1519054084783</td><td rowspan="1">117696</td></tr></tbody>
+</table>
+<h2>FlightBooking_Firefox</h2><h3 id="m0">co.in.kayak.test.FlightBooking#flightBooking</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.TimeoutException: Timed out after 30 seconds waiting for title to contain &quot;19/2&quot;. Current title: &quot;&quot;
+Build info: version: &apos;2.53.1&apos;, revision: &apos;a36b8b1cd5757287168e54b817830adce9b0158d&apos;, time: &apos;2016-06-30 19:26:09&apos;
+System info: host: &apos;Jarvis-PC&apos;, ip: &apos;192.168.1.6&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_141&apos;
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=46.0.1, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: 10bcd23d-bbca-4304-9ed8-b101b6bfe9e7
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:80)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:261)
+	at co.in.kayak.base.PageObject.waitForPageTitle(PageObject.java:124)
+	at co.in.kayak.page.IternaryDetails.closeOfferAlertWindow(IternaryDetails.java:33)
+	at co.in.kayak.test.FlightBooking.flightBooking(FlightBooking.java:45)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+... Removed 16 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>FlightBooking_Chrome</h2><h3 id="m1">co.in.kayak.test.FlightBooking#flightBooking</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.TimeoutException: Timed out after 30 seconds waiting for title to contain &quot;19/2&quot;. Current title: &quot;Waiting...&quot;
+Build info: version: &apos;2.53.1&apos;, revision: &apos;a36b8b1cd5757287168e54b817830adce9b0158d&apos;, time: &apos;2016-06-30 19:26:09&apos;
+System info: host: &apos;Jarvis-PC&apos;, ip: &apos;192.168.1.6&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_141&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.33.506120 (e3e53437346286c0bc2d2dc9aa4915ba81d9023f), userDataDir=C:\Users\Jarvis\AppData\Local\Temp\scoped_dir5340_22032}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=64.0.3282.167, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, setWindowRect=true, unexpectedAlertBehaviour=}]
+Session ID: 5f7047ed251447b0e8924fdad3fc9295
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:80)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:261)
+	at co.in.kayak.base.PageObject.waitForPageTitle(PageObject.java:124)
+	at co.in.kayak.page.IternaryDetails.closeOfferAlertWindow(IternaryDetails.java:33)
+	at co.in.kayak.test.FlightBooking.flightBooking(FlightBooking.java:45)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+... Removed 16 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+</body>
+</html>

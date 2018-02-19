@@ -1,6 +1,6 @@
-taskkill /F /IM chromedriver.exe
-taskkill /F /IM chrome.exe
+REM taskkill /F /IM chromedriver.exe
+REM taskkill /F /IM chrome.exe
 
-taskkill /F /IM firefox.exe
+REM taskkill /F /IM firefox.exe
 
-taskkill /F /IM IEDriverServer.exe
+REM taskkill /F /IM IEDriverServer.exe

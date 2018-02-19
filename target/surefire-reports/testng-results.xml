@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="2" ignored="0" total="2" passed="0">
+  <reporter-output>
+  </reporter-output>
+  <suite name="kayak" duration-ms="124167" started-at="2018-02-19T15:27:58Z" finished-at="2018-02-19T15:30:02Z">
+    <groups>
+    </groups>
+    <test name="FlightBooking_Firefox" duration-ms="102184" started-at="2018-02-19T15:27:58Z" finished-at="2018-02-19T15:29:40Z">
+      <class name="co.in.kayak.test.FlightBooking">
+        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:co.in.kayak.test.FlightBooking@95a785]" name="beforeSuite" is-config="true" duration-ms="33" started-at="2018-02-19T15:27:58Z" finished-at="2018-02-19T15:27:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeSuite -->
+        <test-method status="PASS" signature="beforeMethod(java.lang.String)[pri:0, instance:co.in.kayak.test.FlightBooking@95a785]" name="beforeMethod" is-config="true" duration-ms="15133" started-at="2018-02-19T15:27:58Z" finished-at="2018-02-19T15:28:13Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Firefox]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:co.in.kayak.test.FlightBooking@95a785]" name="beforeMethod" is-config="true" duration-ms="2" started-at="2018-02-19T15:28:13Z" finished-at="2018-02-19T15:28:13Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="FAIL" signature="flightBooking()[pri:0, instance:co.in.kayak.test.FlightBooking@95a785]" name="flightBooking" duration-ms="86614" started-at="2018-02-19T15:28:13Z" finished-at="2018-02-19T15:29:40Z">
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[Timed out after 30 seconds waiting for title to contain "19/2". Current title: ""
+Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
+System info: host: 'Jarvis-PC', ip: '192.168.1.6', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_141'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=46.0.1, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: 10bcd23d-bbca-4304-9ed8-b101b6bfe9e7]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.TimeoutException: Timed out after 30 seconds waiting for title to contain "19/2". Current title: ""
+Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
+System info: host: 'Jarvis-PC', ip: '192.168.1.6', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_141'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=46.0.1, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: 10bcd23d-bbca-4304-9ed8-b101b6bfe9e7
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:80)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:261)
+at co.in.kayak.base.PageObject.waitForPageTitle(PageObject.java:124)
+at co.in.kayak.page.IternaryDetails.closeOfferAlertWindow(IternaryDetails.java:33)
+at co.in.kayak.test.FlightBooking.flightBooking(FlightBooking.java:45)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.lang.reflect.Method.invoke(Method.java:498)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.access$000(SuiteRunner.java:40)
+at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:489)
+at org.testng.internal.thread.ThreadUtil$1.call(ThreadUtil.java:52)
+at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+at java.lang.Thread.run(Thread.java:748)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- flightBooking -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:co.in.kayak.test.FlightBooking@95a785]" name="afterMethod" is-config="true" duration-ms="2" started-at="2018-02-19T15:29:40Z" finished-at="2018-02-19T15:29:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:co.in.kayak.test.FlightBooking@95a785]" name="afterSuite" is-config="true" duration-ms="861" started-at="2018-02-19T15:30:02Z" finished-at="2018-02-19T15:30:03Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterSuite -->
+      </class> <!-- co.in.kayak.test.FlightBooking -->
+    </test> <!-- FlightBooking_Firefox -->
+    <test name="FlightBooking_Chrome" duration-ms="124167" started-at="2018-02-19T15:27:58Z" finished-at="2018-02-19T15:30:02Z">
+      <class name="co.in.kayak.test.FlightBooking">
+        <test-method status="PASS" signature="beforeMethod(java.lang.String)[pri:0, instance:co.in.kayak.test.FlightBooking@fed156]" name="beforeMethod" is-config="true" duration-ms="6033" started-at="2018-02-19T15:27:58Z" finished-at="2018-02-19T15:28:04Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:co.in.kayak.test.FlightBooking@fed156]" name="beforeMethod" is-config="true" duration-ms="31" started-at="2018-02-19T15:28:04Z" finished-at="2018-02-19T15:28:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="FAIL" signature="flightBooking()[pri:0, instance:co.in.kayak.test.FlightBooking@fed156]" name="flightBooking" duration-ms="117696" started-at="2018-02-19T15:28:04Z" finished-at="2018-02-19T15:30:02Z">
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[Timed out after 30 seconds waiting for title to contain "19/2". Current title: "Waiting..."
+Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
+System info: host: 'Jarvis-PC', ip: '192.168.1.6', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_141'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.33.506120 (e3e53437346286c0bc2d2dc9aa4915ba81d9023f), userDataDir=C:\Users\Jarvis\AppData\Local\Temp\scoped_dir5340_22032}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=64.0.3282.167, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, setWindowRect=true, unexpectedAlertBehaviour=}]
+Session ID: 5f7047ed251447b0e8924fdad3fc9295]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.TimeoutException: Timed out after 30 seconds waiting for title to contain "19/2". Current title: "Waiting..."
+Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
+System info: host: 'Jarvis-PC', ip: '192.168.1.6', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_141'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.33.506120 (e3e53437346286c0bc2d2dc9aa4915ba81d9023f), userDataDir=C:\Users\Jarvis\AppData\Local\Temp\scoped_dir5340_22032}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=64.0.3282.167, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, setWindowRect=true, unexpectedAlertBehaviour=}]
+Session ID: 5f7047ed251447b0e8924fdad3fc9295
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:80)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:261)
+at co.in.kayak.base.PageObject.waitForPageTitle(PageObject.java:124)
+at co.in.kayak.page.IternaryDetails.closeOfferAlertWindow(IternaryDetails.java:33)
+at co.in.kayak.test.FlightBooking.flightBooking(FlightBooking.java:45)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.lang.reflect.Method.invoke(Method.java:498)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.access$000(SuiteRunner.java:40)
+at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:489)
+at org.testng.internal.thread.ThreadUtil$1.call(ThreadUtil.java:52)
+at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+at java.lang.Thread.run(Thread.java:748)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- flightBooking -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:co.in.kayak.test.FlightBooking@fed156]" name="afterMethod" is-config="true" duration-ms="0" started-at="2018-02-19T15:30:02Z" finished-at="2018-02-19T15:30:02Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+      </class> <!-- co.in.kayak.test.FlightBooking -->
+    </test> <!-- FlightBooking_Chrome -->
+  </suite> <!-- kayak -->
+</testng-results>

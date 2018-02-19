@@ -1,0 +1,30 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 125.705 sec <<< FAILURE! - in TestSuite
+flightBooking(co.in.kayak.test.FlightBooking)  Time elapsed: 87.022 sec  <<< FAILURE!
+org.openqa.selenium.TimeoutException: Timed out after 30 seconds waiting for title to contain "19/2". Current title: ""
+Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
+System info: host: 'Jarvis-PC', ip: '192.168.1.6', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_141'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=46.0.1, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: 10bcd23d-bbca-4304-9ed8-b101b6bfe9e7
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:80)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:261)
+	at co.in.kayak.base.PageObject.waitForPageTitle(PageObject.java:124)
+	at co.in.kayak.page.IternaryDetails.closeOfferAlertWindow(IternaryDetails.java:33)
+	at co.in.kayak.test.FlightBooking.flightBooking(FlightBooking.java:45)
+
+flightBooking(co.in.kayak.test.FlightBooking)  Time elapsed: 109.006 sec  <<< FAILURE!
+org.openqa.selenium.TimeoutException: Timed out after 30 seconds waiting for title to contain "19/2". Current title: "Waiting..."
+Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
+System info: host: 'Jarvis-PC', ip: '192.168.1.6', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_141'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.33.506120 (e3e53437346286c0bc2d2dc9aa4915ba81d9023f), userDataDir=C:\Users\Jarvis\AppData\Local\Temp\scoped_dir5340_22032}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=64.0.3282.167, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, setWindowRect=true, unexpectedAlertBehaviour=}]
+Session ID: 5f7047ed251447b0e8924fdad3fc9295
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:80)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:261)
+	at co.in.kayak.base.PageObject.waitForPageTitle(PageObject.java:124)
+	at co.in.kayak.page.IternaryDetails.closeOfferAlertWindow(IternaryDetails.java:33)
+	at co.in.kayak.test.FlightBooking.flightBooking(FlightBooking.java:45)
+

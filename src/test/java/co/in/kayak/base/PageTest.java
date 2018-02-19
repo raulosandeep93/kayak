@@ -1,12 +1,16 @@
 package co.in.kayak.base;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
@@ -20,14 +24,14 @@ public class PageTest {
 	
 	@BeforeSuite
 	public void beforeSuite() {
-		Reporter.log("Inside Before Suite method.");
+		System.out.println("Inside beforeSuite method.");
 		killDriverInstance();
 	}
 	
 	@Parameters({ "browserName" })
 	@BeforeMethod
 	public void beforeMethod(String browserName) {
-		Reporter.log("Inside Before Method method.");
+		System.out.println("Inside beforeMethod method.");
 		switch (browserName) {
 		case "Chrome":
 			initChrome();
@@ -39,53 +43,62 @@ public class PageTest {
 			initInternetExplorer();
 			break;
 		default:
-			Reporter.log("Invalid browser name.");
+			System.out.println("Invalid browser name.");
 			Assert.fail("Invalid browser name.");
 		}
 	}
 	
 	@AfterMethod
 	public void afterMethod() {
-		Reporter.log("Inside After Method method.");
+		System.out.println("Inside After Method method.");
 	}
 	
 	@AfterSuite
 	public void afterSuite() {
-		Reporter.log("Inside After Suite Method.");
-		if (driver != null) {
-			killDriverInstance();
+		System.out.println("Inside After Suite Method.");
+		if(driver != null) {
+//			killDriverInstance();
+			driver.quit();
 		}
 	}
 	
 	public void killDriverInstance() {
 		try {
-			Process process = Runtime.getRuntime().exec("D:\\Selenium\\Workspace\\Assignment02\\KillDriver.bat");
+			Process process = Runtime.getRuntime().exec(System.getProperty("user.dir") +  "//KillDriver.bat");
 			process.waitFor();
 		} catch (IOException ex) {
-			Reporter.log("IOException in accessing KillDriver.bat file:" + ex.toString());
+			System.out.println("IOException in accessing KillDriver.bat file:" + ex.toString());
 		} catch (Exception ex) {
-			Reporter.log("Exception in accessing KillDriver.bat file:" + ex.toString());
+			System.out.println("Exception in accessing KillDriver.bat file:" + ex.toString());
 		}
 	}
 
 	public void  initChrome() {
 		System.setProperty("webdriver.chrome.driver", CONSTANTS.CHROMEPATH);
 		
-		Reporter.log("Launching Chrome browser.");
+		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("incognito");
+		capabilities.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
+		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+		
 		System.out.println("Launching Chrome browser.");
-		driver = new ChromeDriver();
-		Reporter.log("Chrome browser launched.");
+		driver = new ChromeDriver(capabilities);
+		driver.manage().timeouts().implicitlyWait(30000, TimeUnit.MILLISECONDS);
+		System.out.println("Chrome browser launched.");
 		
 		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		
 	}
 
 	public void  initFirefox() {
-		System.setProperty("webdriver.gecko.driver", CONSTANTS.FIREFOXPATH);
+//		System.setProperty("webdriver.gecko.driver", CONSTANTS.FIREFOXPATH);
 		
-		Reporter.log("Launching Firefox browser.");
 		System.out.println("Launching Firefox browser.");
 		driver = new FirefoxDriver();
-		Reporter.log("Firefox browser launched.");		
+		driver.manage().timeouts().implicitlyWait(30000, TimeUnit.MILLISECONDS);
+		System.out.println("Firefox browser launched successfully.");		
 		
 		driver.manage().window().maximize();
 	}
@@ -93,9 +106,10 @@ public class PageTest {
 	public void initInternetExplorer() {
 		System.setProperty("webdriver.ie.driver", CONSTANTS.IEPATH);
 		
-		Reporter.log("Launching Internet Explorer browser.");
+		System.out.println("Launching Internet Explorer browser.");
 		driver = new InternetExplorerDriver();
-		Reporter.log("Internet Explorer browser launched.");		
+		driver.manage().timeouts().implicitlyWait(30000, TimeUnit.MILLISECONDS);
+		System.out.println("Internet Explorer browser launched.");		
 		
 		driver.manage().window().maximize();
 	}

@@ -10,7 +10,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import org.testng.Reporter;
 
 import co.in.kayak.base.PageObject;
 import co.in.kayak.utils.CONSTANTS;
@@ -30,10 +29,10 @@ public class Flights extends PageObject {
 	@FindBy(xpath = "//input[contains(@id,'-destination-airport')]")
 	public WebElement ddl_to;
 
-	@FindBy(xpath = "//div[contains(@id,'-origin-airport-smartbox-dropdown')]/ul")
+	@FindBy(xpath = "//div[contains(@id,'-origin-airport-smartbox-dropdown')]")
 	public WebElement ddl_fromAutoSuggestion;
 
-	@FindBy(xpath = "//div[contains(@id,'-destination-airport-smartbox-dropdown')]/ul")
+	@FindBy(xpath = "//div[contains(@id,'-destination-airport-smartbox-dropdown')]")
 	public WebElement ddl_toAutoSuggestion;
 
 	@FindBy(xpath = "//div[contains(@id,'-depart-input')]")
@@ -60,26 +59,23 @@ public class Flights extends PageObject {
 	@FindBy(xpath = "(//button[contains(@id,'-submit')])[2]")
 	public WebElement btnSearch;
 
-	@FindBy(xpath="//a[@aria-label='KAYAK logo']")
-	public WebElement kayakLogo;
-	
 	public void selectOneWay() {
-		Reporter.log("Clicking on One Way link.");
+		System.out.println("Clicking on One Way link.");
 		elementClick(link_oneway);
-		Reporter.log("Clicked on One Way link.");
+		System.out.println("Clicked on One Way link.");
 	}
 
-	public void selectOrigin() {
-		enterValue(ddl_from, CONSTANTS.ORIGINLOCATION);
+	public void selectOrigin(String origin) {
+		enterValue(ddl_from, origin);
 		selectValueFromDropdown(ddl_fromAutoSuggestion, CONSTANTS.ORIGINLOCATION);
 	}
 
-	public void selectDestination() {
-		enterValue(ddl_to, CONSTANTS.DESTINATIONLOCATION);
+	public void selectDestination(String destination) {
+		enterValue(ddl_to, destination);
 		selectValueFromDropdown(ddl_toAutoSuggestion, CONSTANTS.DESTINATIONLOCATION);
 	}
 
-	public void selectOriginDate() {
+	public void selectOriginDate(String originDate) {
 		String calTodaysDate = null;
 		
 		// Click on Depart textbox.
@@ -105,9 +101,9 @@ public class Flights extends PageObject {
 			System.out.println("Number of days:" + allDays.size());
 			
 			for (WebElement day : allDays) {
-				if(CONSTANTS.ORIGINDATE.split("-")[2].equals(day.getText())) {
+				if(originDate.split("-")[2].equals(day.getText())) {
 					if(day.getAttribute("class").contains("empty") || day.getAttribute("class").contains("disabled")) {
-						System.out.println("Booking for required date:" + CONSTANTS.ORIGINDATE + " is either a past date or not available.");
+						System.out.println("Booking for required date:" + originDate + " is either a past date or not available.");
 					} else {
 						day.click();
 						break;
@@ -178,12 +174,8 @@ public class Flights extends PageObject {
         }
 
 	public void searchFlights() {
-		takeScreenshot("IternaryDetails");
-		
+		System.out.println("Clicking on Search button.");
 		elementClick(btnSearch);
-		elementToBeVisible(kayakLogo);
-		
-		getWindowHandles(CONSTANTS.ORIGINDATE.split("-")[2] + "/" + CONSTANTS.ORIGINDATE.split("-")[1].replaceAll("0", ""));
-		takeScreenshot("FlightDetails");
+		System.out.println("Search button clicked.");
 	}
 }

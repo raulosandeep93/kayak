@@ -2,20 +2,24 @@ package co.in.kayak.base;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Reporter;
 
 import co.in.kayak.utils.CONSTANTS;
 import junit.framework.Assert;
@@ -31,12 +35,11 @@ public class PageObject extends PageTest {
 	 * 
 	 */
 	public void launchAUT(String url) {
-		Reporter.log("Launching application under test.");
+		System.out.println("Launching application under test.");
 		driver.get(url);
-		Reporter.log("Launched application under test.");
+		System.out.println("Launched application under test.");
 	}
 
-	
 	/**
 	 * 
 	 * Generic method to click an element.
@@ -75,13 +78,12 @@ public class PageObject extends PageTest {
 			WebDriverWait wait = new WebDriverWait(driver, 60);
 			wait.until(ExpectedConditions.elementToBeClickable(element));
 			
-			Reporter.log("Stale Element exception:" + ex.toString());
 			Assert.fail("Stale Element exception:" + ex.getMessage());
 		} catch (NoSuchElementException ex) {
-			Reporter.log("No such element exception:" + ex.toString());
+			System.out.println("No such element exception:" + ex.toString());
 			Assert.fail("No such element exception:" + ex.toString());
 		} catch (Exception ex) {
-			Reporter.log("Exception in elementToBeClickable method:" + ex.toString());
+			System.out.println("Exception in elementToBeClickable method:" + ex.toString());
 			Assert.fail("Exception in elementToBeClickable method:" + ex.toString());
 		}
 	}
@@ -94,20 +96,35 @@ public class PageObject extends PageTest {
 	 */
 	public void elementToBeVisible(WebElement element) {
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, 30);
-			wait.until(ExpectedConditions.visibilityOf(element));
+			WebDriverWait wait = new WebDriverWait(driver, 120);
+			wait.until(ExpectedConditions.visibilityOf (element));
 		} catch (StaleElementReferenceException ex) {
-			Reporter.log("Stale Element exception:" + ex.toString());
+			System.out.println("Stale Element exception:" + ex.toString());
 			Assert.fail("Stale Element exception:" + ex.toString());
 		} catch (NoSuchElementException ex) {
-			Reporter.log("No such element exception:" + ex.toString());
+			System.out.println("No such element exception:" + ex.toString());
 			Assert.fail("No such element exception:" + ex.toString());
 		} catch (Exception ex) {
-			Reporter.log("Exception in elementToBeVisible method:" + ex.toString());
+			System.out.println("Exception in elementToBeVisible method:" + ex.toString());
 			Assert.fail("Exception in elementToBeVisible method:" + ex.toString());
 		}
 	}
 
+	/**
+	 * 
+	 * Generic method to explicitly wait for page title to change.
+	 * @param pageTitle - It takes page title as a parameter.
+	 */
+	public void waitForPageTitle(String pageTitle) {
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, 30);
+			wait.until(ExpectedConditions.titleContains(pageTitle.split(",")[0]));
+		} catch (Exception ex) {
+			WebDriverWait wait = new WebDriverWait(driver, 30);
+			wait.until(ExpectedConditions.titleContains(pageTitle.split(",")[1]));
+		}
+	}
+	
 	/**
 	 * 
 	 * Generic method to select a value from auto-suggestion dropdown list.
@@ -119,7 +136,7 @@ public class PageObject extends PageTest {
 	public boolean selectValueFromDropdown(WebElement element, String value) {
 		boolean cityFound = false;
 
-		elementToBeClickable(element);
+		elementToBeVisible(element);
 
 		List<WebElement> options = element.findElements(By.tagName("li"));
 		System.out.println("Number of matching options: " + options.size());
@@ -134,10 +151,10 @@ public class PageObject extends PageTest {
 		}
 
 		if (cityFound == true) {
-			Reporter.log("Expected value:" + value + " is present in the dropdown list.");
+			System.out.println("Expected value:" + value + " is present in the dropdown list.");
 //			System.out.println("Expected value:" + value + " is present in the dropdown list.");
 		} else {
-			Reporter.log("Expected value:" + value + " is not present in the dropdown list.");
+			System.out.println("Expected value:" + value + " is not present in the dropdown list.");
 //			System.out.println("Expected value:" + value + " is not present in the dropdown list.");
 			Assert.fail("Expected value:" + value + " is not present in the dropdown list.");
 		}
@@ -268,19 +285,19 @@ public class PageObject extends PageTest {
 	}
 
 	public void takeScreenshot(String fileName) {
+		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		try {
-			File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-			FileUtils.copyFile(scrFile, new File(CONSTANTS.PROJECTLOCATION + fileName + ".jpg"));
+			FileUtils.copyFile(scrFile, new File(CONSTANTS.EXECUTIONSCREENSHOTS + fileName + "_" + currentDateTime() + ".jpg"));
 		} catch (IOException ex) {
 			System.out.println("IOException while storing screenshot." + ex.toString());
 		} catch (Exception ex) {
-			System.out.println("Exception while taking screenshot." + ex.toString());
+			System.out.println("Exception while taking screenshot." + ex.getMessage());
 		}
 	}
 
 	public void getWindowHandles(String title) {
 		Set<String> allWindows = driver.getWindowHandles();
-		System.out.println(allWindows.size());
+		System.out.println("Number of windows:" + allWindows.size());
 		
 		boolean windowFound = false;
 
@@ -297,13 +314,25 @@ public class PageObject extends PageTest {
 		}
 
 		if (windowFound) {
-			Reporter.log("Window switched successfully.");
 			System.out.println("Window switched successfully.");
 		} else {
-			Reporter.log("Unable to find the desired window.");
 			System.out.println("Unable to find the desired window.");
 			Assert.fail("Unable to find the desired window.");
 		}
 	}
 
+	public void pressEscapeButton() {
+		try {
+			Actions action = new Actions(driver);
+			action.sendKeys(Keys.ESCAPE).build().perform();
+		} catch (Exception ex) {
+			System.out.println("Exception in pressEscapeButton method:" + ex.toString());
+		}
+	}
+	
+	public String currentDateTime() {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss");
+		Date date = new Date();
+		return dateFormat.format(date);
+	}
 }

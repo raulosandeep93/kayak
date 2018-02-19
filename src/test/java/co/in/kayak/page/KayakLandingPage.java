@@ -1,6 +1,5 @@
 package co.in.kayak.page;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -19,6 +18,9 @@ public class KayakLandingPage extends PageObject {
 
 	public void selectFlight() {
 		launchAUT(CONSTANTS.BASEURL);
+		
+		System.out.println("Clcking on Flights options.");
 		elementClick(link_flights);
+		System.out.println("Flights option clicked successfully.");
 	}
 }
